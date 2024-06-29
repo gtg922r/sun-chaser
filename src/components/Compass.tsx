@@ -64,13 +64,17 @@ const Compass: React.FC<CompassProps> = ({ angle, onChange }) => {
       >
         <polygon 
           className="fill-neutral"
-          points="50,5 60,30 50,25 40,30" 
+          points="50,20 60,30 50,28 40,30" 
         />
       </svg>
-      <div className="absolute text-center text-3xl font-bold">
+      <div className="absolute text-center text-2xl font-extrabold select-none">
         {Math.round(angle)}°
       </div>
-      
+      {/* Add cardinal directions */}
+      <div className="absolute top-2 left-1/2 transform -translate-x-1/2 text-xl font-bold text-neutral-400 select-none">N</div>
+      <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 text-xl font-bold text-neutral-400 select-none">S</div>
+      <div className="absolute top-1/2 left-2 transform -translate-y-1/2 text-xl font-bold text-neutral-400 select-none">W</div>
+      <div className="absolute top-1/2 right-2 transform -translate-y-1/2 text-xl font-bold text-neutral-400 select-none">E</div>
     </div>
   );
 };
