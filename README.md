@@ -45,7 +45,7 @@ Sun Chaser is a React application built with TypeScript and Vite. It allows user
    npm run dev
    ```
 
-4. Open your browser and navigate to `http://localhost:3000`.
+4. Open your browser and navigate to link provided by npm.
 
 ## Scripts
 
