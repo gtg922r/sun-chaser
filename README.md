@@ -1,5 +1,9 @@
 # Sun Chaser
 
+
+<p align="center">
+  <img src="https://github.com/gtg922r/sun-chaser/assets/1195174/065c4d85-3946-46b4-bc00-e1f89e4acb4d">
+</p>
 Sun Chaser is a React application built with TypeScript and Vite. It allows users to interact with a map, select a date, and determine the time when the shadow will flip based on the selected compass direction. This project leverages various libraries and tools to provide a seamless and interactive user experience.
 
 ## Features
