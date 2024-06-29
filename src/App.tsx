@@ -4,6 +4,7 @@ import LeafletMap from './components/LeafletMap';
 import { LatLng, latLng } from 'leaflet';
 import Compass from './components/Compass';
 import SunCalc from 'suncalc';
+import { FaGithub, FaRunning, FaSun } from 'react-icons/fa';
 
 function App() {
   const defaultPosition: LatLng = latLng(37.3688, -122.0363);
@@ -51,9 +52,10 @@ function App() {
 
   useEffect(() => {
     const fetchCityName = async () => {
-      // const name = await getCityName(markerPosition);
-      // setCityName(name);
-      setCityName("Sunnyvale")
+      setCityName('Loading...');
+      const name = await getCityName(markerPosition);
+      setCityName(name);
+      // setCityName("Sunnyvale")
     };
     fetchCityName();
   }, [markerPosition]);
@@ -84,7 +86,12 @@ function App() {
   
   return (
     <div id="windowMain" className="flex flex-col items-center justify-center h-screen w-screen bg-base-100">
-      <div id="appMain" className="bg-base-200 w-4/5 h-5/6 min-w-[512px] min-h-[512px] max-w-[768px] max-h-[1024px] rounded-xl shadow-md relative overflow-hidden">       
+      <div className="w-4/5 min-w-[512px] max-w-[768px] font-light text-sm pl-1 text-gray-300 flex flex-row">
+        <div className='flex-grow-0 flex flex-row items-center hover:text-gray-500'><FaSun className='' /><FaRunning className='mx-1' /><i>sun chaser</i></div>
+        <div className='flex-grow'></div>
+        <div className='flex-grow-0 flex flex-row items-center hover:text-gray-500'><a href="https://github.com/gtg922r">github | RyanC</a><a href="https://github.com/gtg922r"><FaGithub className='ml-2' /></a></div>
+      </div>
+      <div id="appMain" className="bg-base-200 w-4/5 h-5/6 min-w-[512px] min-h-[512px] max-w-[768px] max-h-[1024px] rounded-xl shadow-lg relative overflow-hidden">       
         <div id="overlayMain" className="w-full h-full grid grid-cols-[1fr_12rem] grid-rows-[12rem_max-content_1fr_max-content] absolute top-0 left-0 z-[1000] gap-6 p-6 pointer-events-none">
           <div id="compassPanel" className="bg-base-100 col-start-2 shadow-md pointer-events-auto rounded-full overflow-hidden p-4">
             <Compass angle={selectedCompass} onChange={handleCompassChange} />
@@ -100,19 +107,23 @@ function App() {
             />
           </div>
           <div id="infoPanel" className="bg-base-100 p-4 col-span-2 col-start-1 row-start-4 shadow-md rounded-lg pointer-events-auto">
-            {/* <div id="infoPanelTitle" className="text-xl font-bold">sun chaser</div> */}
             <div id="infoPanelInput" className="text-sm flex flex-row">
-              <div className="stat">
-                <div className="stat-title">Location</div>
-                <div className="stat-value">{cityName}</div>
+              <div className="flex flex-col w-1/3 justify-center p-2 items-center">
+                {/* <div className="text-sm text-gray-500">Location</div> */}
+                {/* <div className="text-2xl font-bold">{cityName}</div> */}
+                {/* <input type="text" className="input input-lg text-3xl font-bold" value={cityName} readOnly /> */}
+                <div className="text-3xl font-bold">{cityName}</div>
               </div>
-              <div className="stat">
-                <div className="stat-title">Date</div>
-                <div className="stat-value">{new Date(selectedDate).toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric'})}</div>
-              </div>
-              <div className="stat">
+              <div className="flex flex-col w-1/3 justify-center p-2 items-center">
+                {/* <div className="text-sm text-gray-500">Location</div> */}
+                {/* <div className="text-2xl font-bold">{cityName}</div> */}
+                {/* <input type="text" className="input input-lg text-3xl font-bold" value={cityName} readOnly /> */}
+                <div className="text-3xl font-bold">{new Date(selectedDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric'})}</div>
+              </div>              
+              <div className="stat w-1/3 place-items-center">
                 <div className="stat-title">Shadow Flip</div>
-                <div className="stat-value text-primary">{shadowFlipTime}</div>
+                <div className="stat-value text-primary text-3xl">{shadowFlipTime}</div>
+                <div className="stat-desc">When facing {selectedCompass.toFixed(0)}°</div>
               </div>                              
             </div>
           </div>
