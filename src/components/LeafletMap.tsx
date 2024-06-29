@@ -35,7 +35,7 @@ const LeafletMap: React.FC<LeafletMapProps> = ({ markerPosition, onMapClick }) =
   return (
     <MapContainer dragging={true} center={center} zoom={10} style={{ height: '100%', width: '100%' }}>
       <TileLayer
-        url="https://tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token=isH2v8TDXRrzf0EOEQSjNM10BU6avRsx2Lbx4VBmMXJTa0kQ1D6CxN4kLgZK6fPA"
+        url="https://tile.jawg.io/jawg-terrain/{z}/{x}/{y}{r}.png?access-token={accessToken}"
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
       />
       <MapClickHandler />
